@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Survey</title>
+</head>
+<body>
+
+<label for="city">选择性别：</label>
+<select name="city" id="city" required>
+  <option value="" disabled selected>-- 请选择 --</option>
+  <option value="male">男</option>
+  <option value="Female">女</option>
+  <option value="Secrecy">保密（调查数量会减少）</option>
+</select><br>
+
+<label>年龄：</label>
+<select id="age" name="age">
+<option value="" disabled selected>-- 请选择 --</option>
+<option value="Other">其他</option>
+  <script>
+    for(let i = 8; i <= 100; i++){
+      document.write(`<option value="${i}">${i}岁</option>`);
+    }
+  </script>
+</select><br>
+
+请选择省份：
+<select name="province" id="province">
+  <option value="" disabled selected>-- 请选择 --</option>
+  <option value="北京市">北京市</option>
+  <option value="天津市">天津市</option>
+  <option value="河北省">河北省</option>
+  <option value="山西省">山西省</option>
+  <option value="内蒙古自治区">内蒙古自治区</option>
+  <option value="辽宁省">辽宁省</option>
+  <option value="吉林省">吉林省</option>
+  <option value="黑龙江省">黑龙江省</option>
+  <option value="上海市">上海市</option>
+  <option value="江苏省">江苏省</option>
+  <option value="浙江省">浙江省</option>
+  <option value="安徽省">安徽省</option>
+  <option value="福建省">福建省</option>
+  <option value="江西省">江西省</option>
+  <option value="山东省">山东省</option>
+  <option value="河南省">河南省</option>
+  <option value="湖北省">湖北省</option>
+  <option value="湖南省">湖南省</option>
+  <option value="广东省">广东省</option>
+  <option value="广西壮族自治区">广西壮族自治区</option>
+  <option value="海南省">海南省</option>
+  <option value="重庆市">重庆市</option>
+  <option value="四川省">四川省</option>
+  <option value="贵州省">贵州省</option>
+  <option value="云南省">云南省</option>
+  <option value="西藏自治区">西藏自治区</option>
+  <option value="陕西省">陕西省</option>
+  <option value="甘肃省">甘肃省</option>
+  <option value="青海省">青海省</option>
+  <option value="宁夏回族自治区">宁夏回族自治区</option>
+  <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+</select><br>
+
+出生日期：
+<input type="text" id="year" placeholder="出生年份（4位）">
+<input type="text" id="month" placeholder="出生月份1‑12">
+<input type="text" id="day" placeholder="出生日1‑31"><br>
+
+<button id="nextBtn" onclick="location.href='https://zysurveys.github.io/surveys/11111111/SurveyOK_id=y.html'">下一步</button>
+
+<script>
+const citySel = document.getElementById('city');
+const ageSel = document.getElementById('age');
+const provinceSel = document.getElementById('province');
+const yearInp = document.getElementById('year');
+const monthInp = document.getElementById('month');
+const dayInp = document.getElementById('day');
+const btn = document.getElementById('nextBtn');
+
+function checkAllFilled() {
+  // 必选不为空
+  const cityOk = citySel.value !== "";
+  const ageOk = ageSel.value !== "";
+  const proOk = provinceSel.value !== "";
+
+  const y = yearInp.value.trim();
+  const m = monthInp.value.trim();
+  const d = dayInp.value.trim();
+
+  // 非空
+  const yOk = y !== "";
+  const mOk = m !== "";
+  const dOk = d !== "";
+
+  // 格式校验
+  const yearValid = /^\d{4}$/.test(y); //4位数字
+  const monthValid = /^(1[0-2]|[1-9])$/.test(m); //1‑12
+  const dayValid = /^(3[0-1]|[1-2]\d|[1-9])$/.test(d); //1‑31
+
+  const allPass = cityOk && ageOk && proOk && yOk && mOk && dOk
+               && yearValid && monthValid && dayValid;
+
+  btn.disabled = !allPass;
+}
+
+citySel.addEventListener('change', checkAllFilled);
+ageSel.addEventListener('change', checkAllFilled);
+provinceSel.addEventListener('change', checkAllFilled);
+yearInp.addEventListener('input', checkAllFilled);
+monthInp.addEventListener('input', checkAllFilled);
+dayInp.addEventListener('input', checkAllFilled);
+</script>
+
+</body>
+</html>
