@@ -66,7 +66,7 @@
 <input type="text" id="month" placeholder="出生月份1‑12">
 <input type="text" id="day" placeholder="出生日1‑31"><br>
 
-<button id="nextBtn" onclick disabled="location.href='https://zysurveys.github.io/surveys/11111111/X3HD996783CH963.html'">下一步</button>
+<button id="nextBtn" disabled onclick ="location.href='https://zysurveys.github.io/surveys/11111111/X3HD996783CH963.html'">下一步</button>
 
 <script>
 const citySel = document.getElementById('city');
@@ -97,7 +97,7 @@ function checkAllFilled() {
   const monthValid = /^(1[0-2]|[1-9])$/.test(m); //1‑12
   const dayValid = /^(3[0-1]|[1-2]\d|[1-9])$/.test(d); //1‑31
 
-  const allPass = cityOk && ageOk && proOk && yOk && mOk && dOk
+  const allPass = cityOk && ageOk && proOk && yOk && mO && dOk
                && yearValid && monthValid && dayValid;
 
   btn.disabled = !allPass;
